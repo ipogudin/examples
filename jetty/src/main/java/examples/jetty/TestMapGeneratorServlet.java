@@ -1,8 +1,6 @@
 package examples.jetty;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.ServletException;
@@ -16,7 +14,8 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import examples.generators.MapGenerator;
+import examples.commons.generators.MapGenerator;
+
 
 @SuppressWarnings("serial")
 public class TestMapGeneratorServlet extends HttpServlet

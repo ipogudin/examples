@@ -1,4 +1,4 @@
-package examples.generators;
+package examples.commons.generators;
 
 import static examples.commons.Utils.check;
 
