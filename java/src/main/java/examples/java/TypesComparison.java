@@ -7,6 +7,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.infra.Blackhole;
 
 public class TypesComparison {
   
@@ -16,8 +17,19 @@ public class TypesComparison {
   @Benchmark
   @BenchmarkMode(Mode.AverageTime)
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
-  public void primitiveInt() {
-    int result = calculateWithInt(RANDOM_INT);
+  public void justReturnIncrementedInt(Blackhole bh) {
+    bh.consume(incInt(RANDOM_INT));
+  }
+
+  public int incInt(int i) {
+    return i;
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.AverageTime)
+  @OutputTimeUnit(TimeUnit.NANOSECONDS)
+  public void primitiveInt(Blackhole bh) {
+    bh.consume(calculateWithInt(RANDOM_INT));
   }
   
   public int calculateWithInt(int randomNumber) {
@@ -31,8 +43,8 @@ public class TypesComparison {
   @Benchmark
   @BenchmarkMode(Mode.AverageTime)
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
-  public void wrapperInteger() {
-    int result = calculateWithInteger(RANDOM_INTEGER);
+  public void wrapperInteger(Blackhole bh) {
+    bh.consume(calculateWithInteger(RANDOM_INTEGER));
   }
     
 
