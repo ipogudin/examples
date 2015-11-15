@@ -3,5 +3,9 @@
 .classpath
 .settings
 
+#idea files
+.idea
+*.iml
+
 #maven
 target
